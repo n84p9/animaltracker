@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Animal Tracker</title>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    form { margin-bottom: 2em; }
+    label { display: inline-block; width: 80px; }
+    input { margin-bottom: 10px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background-color: #f5f5f5; }
+  </style>
+</head>
+<body>
+
+<h1>Animal Tracker</h1>
+
+<form action="#" th:action="@{/}" th:object="${logEntry}" method="post">
+  <div>
+    <label>Animal:</label>
+    <input type="text" th:field="*{animal}" placeholder="Enter animal name" required />
+  </div>
+  <div>
+    <label>Stream:</label>
+    <input type="text" th:field="*{stream}" placeholder="Enter stream name" required />
+  </div>
+  <button type="submit">Add Entry</button>
+</form>
+
+<h2>All Entries</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Animal</th>
+    <th>Stream</th>
+    <th>Timestamp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="entry : ${entries}">
+    <td th:text="${entry.id}"></td>
+    <td th:text="${entry.animal}"></td>
+    <td th:text="${entry.stream}"></td>
+    <td th:text="${entry.timestamp}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
