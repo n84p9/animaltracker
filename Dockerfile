@@ -1,4 +1,4 @@
-FROM gradle:8.10-jdk21 AS builder
+FROM docker.io/library/gradle:8.10-jdk21 AS builder
 WORKDIR /app
 COPY . .
 RUN gradle clean bootJar --no-daemon
